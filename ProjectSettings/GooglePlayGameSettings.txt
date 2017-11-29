@@ -1,0 +1,10 @@
+lastUpgrade=00936
+proj.pluginVersion=0.9.36
+proj.AppId=347697196977
+and.BundleId=com.DanielSorensen.GravityReboundFull
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3cstring+name%3d%22app_id%22%3e347697196977%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22package_name%22%3ecom.DanielSorensen.GravityReboundFull%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_level_1%22%3eCgkIsd_4oo8KEAIQAg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_level_2%22%3eCgkIsd_4oo8KEAIQAw%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_level_3%22%3eCgkIsd_4oo8KEAIQBA%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_level_4%22%3eCgkIsd_4oo8KEAIQBQ%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22achievement_level_5%22%3eCgkIsd_4oo8KEAIQBg%3c%2fstring%3e%0d%0a++%3cstring+name%3d%22leaderboard_overall%22%3eCgkIsd_4oo8KEAIQAQ%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=
+proj.requireGPlus=false
+android.SetupDone=true
