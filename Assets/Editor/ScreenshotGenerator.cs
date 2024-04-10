@@ -30,7 +30,7 @@ public class ScreenshotGenerator : EditorWindow {
     }
 
     public void TakeScreenshot(string outputPath) {
-        Application.CaptureScreenshot(outputPath);
+        ScreenCapture.CaptureScreenshot(outputPath);
 
         EditorUtility.DisplayDialog("Taken Screenshot Successfully", "Saved a Screenshot to " + outputPath, "OK");
     }
