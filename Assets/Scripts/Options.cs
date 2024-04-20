@@ -26,11 +26,6 @@ public class Options : MonoBehaviour {
     public Button doneButton;
     public Text mainErrorText;
 
-    [Header("Other Screens")]
-    public Button multiplayerButton;
-    public GameObject passwordPanel;
-    public InputField passwordPanelField;
-
     enum Option { Skin, Background }
 
     #region Options
@@ -48,7 +43,7 @@ public class Options : MonoBehaviour {
     void Awake() {
         UpdateSkins();
         UpdateBackgrounds();
-        
+
         SetUsername(PlayerPrefs.GetString("Username", ""));
     }
 
@@ -62,8 +57,7 @@ public class Options : MonoBehaviour {
         if (string.IsNullOrEmpty(username)) {
             doneButton.interactable = false;
             UI.SetPage("Username", true);
-        }
-        else {
+        } else {
             usernameField.readOnly = true;
         }
     }
@@ -95,7 +89,7 @@ public class Options : MonoBehaviour {
 
         list = Resources.LoadAll<Sprite>(option.ToString() + "s");
         selector.ClearChildren();
-        
+
         foreach (Sprite sprite in list) {
             Image image = new GameObject(sprite.name).AddComponent<Image>();
             image.sprite = sprite;
@@ -119,14 +113,14 @@ public class Options : MonoBehaviour {
             audio.element = UIAudio.Element.Button;
 
             buttons.Add(sprite.name, button);
-            
+
             if (sprite.name == PlayerPrefs.GetString(option.ToString(), def)) {
                 image.color = selectedColour;
 
-                switch(option) {
+                switch (option) {
                     case (Option.Skin):
                         skin = sprite;
-                        foreach(Image i in skinnedImages) {
+                        foreach (Image i in skinnedImages) {
                             i.sprite = sprite;
                         }
                         break;
@@ -184,13 +178,12 @@ public class Options : MonoBehaviour {
 
     #region Username Functions
     public void InputUsername(string newUsername) {
-        if (!string.IsNullOrEmpty(newUsername)) {    
+        if (!string.IsNullOrEmpty(newUsername)) {
             Debug.Log("Setting username to " + newUsername);
 
             SetUsername(newUsername);
             ClearError();
-        }
-        else {
+        } else {
             SetUsername("");
             ShowError("");
         }

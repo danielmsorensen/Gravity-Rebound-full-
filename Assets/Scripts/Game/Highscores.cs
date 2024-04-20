@@ -35,12 +35,11 @@ public class Highscores : MonoBehaviour {
 
         if (string.IsNullOrEmpty(www.error)) {
             Debug.Log("Highscore uploaded successfully: " + username);
-        }
-        else {
+        } else {
             Debug.LogError("Error uploading highscore: " + www.error);
         }
     }
-    
+
     [ContextMenu("Download Highscores")]
     public void DownloadHighscores() {
         DownloadHighscores(null);
@@ -63,9 +62,8 @@ public class Highscores : MonoBehaviour {
             }
 
             if (callback != null) callback.Invoke(highscores);
-            if(useUI) UpdateUI();
-        }
-        else {
+            if (useUI) UpdateUI();
+        } else {
             Debug.LogError("Error downloading highscores: " + www.error);
         }
     }
@@ -77,28 +75,25 @@ public class Highscores : MonoBehaviour {
         WWW www = new WWW(url + publicCode + "/pipe-get/" + WWW.EscapeURL(oldUsername));
         yield return www;
 
-        if(string.IsNullOrEmpty(www.error)) {
+        if (string.IsNullOrEmpty(www.error)) {
             Highscore highscore = new Highscore(www.text);
 
             www = new WWW(url + privateCode + "/delete/" + oldUsername);
             yield return www;
-            
-            if(string.IsNullOrEmpty(www.error)) {
+
+            if (string.IsNullOrEmpty(www.error)) {
                 www = new WWW(url + privateCode + "/add/" + WWW.EscapeURL(newUsername) + "/" + highscore.score + "/0/" + highscore.version.ToString());
                 yield return www;
 
                 if (string.IsNullOrEmpty(www.error)) {
                     Debug.Log("Username changed successfully from: " + oldUsername + " to: " + newUsername);
-                }
-                else {
+                } else {
                     Debug.LogError("Error changing username - add: " + www.error);
                 }
-            }
-            else {
+            } else {
                 Debug.LogError("Error changing username - delete: " + www.error);
             }
-        }
-        else {
+        } else {
             Debug.LogError("Error changing username - get: " + www.error);
         }
     }
@@ -114,13 +109,11 @@ public class Highscores : MonoBehaviour {
             if (string.IsNullOrEmpty(www.text)) {
                 Debug.Log("The username: " + username + " does not exist");
                 callback.Invoke(Highscore.Null, false);
-            }
-            else {
+            } else {
                 Debug.Log("Successfully downloaded highscore: " + username);
                 callback.Invoke(new Highscore(www.text), true);
             }
-        }
-        else {
+        } else {
             Debug.LogError("Error downloading highscore");
         }
     }
@@ -131,10 +124,9 @@ public class Highscores : MonoBehaviour {
         WWW www = new WWW(url + privateCode + "/delete/" + username);
         yield return www;
 
-        if(string.IsNullOrEmpty(www.error)) {
+        if (string.IsNullOrEmpty(www.error)) {
             Debug.Log("Highscore successfully removed: " + username);
-        }
-        else {
+        } else {
             Debug.LogError("Error removing highscore: " + www.error);
         }
     }
@@ -160,7 +152,7 @@ public class Highscores : MonoBehaviour {
 
     #region UI
     public void UpdateUI() {
-        if(!useUI) return;
+        if (!useUI) return;
 
         content.ClearChildren(true);
 
@@ -183,8 +175,7 @@ public class Highscores : MonoBehaviour {
                 else if (t.gameObject.name == "Version") {
                     t.text = score.version.ToString();
                     t.color = (score.version == Highscore.Version.Full) ? Color.blue : Color.red;
-                }
-                else if (t.gameObject.name == "Score") t.text = score.score.ToString("D3");
+                } else if (t.gameObject.name == "Score") t.text = score.score.ToString("D3");
             }
         }
 
@@ -249,8 +240,7 @@ public struct Highscore {
 
         if (parts.Length == 1) {
             this = Null;
-        }
-        else {
+        } else {
             string username = WWW.UnEscapeURL(parts[0]);
             int score = int.Parse(parts[1]);
             Version version = (parts[3] == "Full") ? Version.Full : Version.Lite;
