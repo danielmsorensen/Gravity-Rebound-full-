@@ -44,14 +44,14 @@ public class DynamicSprite : MonoBehaviour {
 
 
     protected virtual void Update() {
-        Vector3 velocity = rigidbody.velocity;
+        Vector3 velocity = rigidbody.linearVelocity;
         if (maxYSpeed != 0) velocity.y = Mathf.Clamp(velocity.y, -maxYSpeed, maxYSpeed);
-        rigidbody.velocity = velocity;
+        rigidbody.linearVelocity = velocity;
     }
 
     protected virtual void FixedUpdate() {
-        if (move) rigidbody.AddForce(Vector2.right * (targetVelocity.x - rigidbody.velocity.x) * rigidbody.mass, ForceMode2D.Impulse);
-        if (move && targetVelocity.y != 0) rigidbody.AddForce(Vector2.up * (targetVelocity.y - rigidbody.velocity.y) * rigidbody.mass, ForceMode2D.Impulse);
+        if (move) rigidbody.AddForce(Vector2.right * (targetVelocity.x - rigidbody.linearVelocity.x) * rigidbody.mass, ForceMode2D.Impulse);
+        if (move && targetVelocity.y != 0) rigidbody.AddForce(Vector2.up * (targetVelocity.y - rigidbody.linearVelocity.y) * rigidbody.mass, ForceMode2D.Impulse);
 
         if (rotate) rigidbody.angularVelocity = targetRotationSpeed;
 

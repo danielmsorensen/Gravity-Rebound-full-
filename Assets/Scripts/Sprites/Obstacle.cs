@@ -62,7 +62,7 @@ public class Obstacle : DynamicSprite {
     public void Respawn(Vector2 position, Vector2 size, Vector2 speed, float rotationSpeed, Color colour, uint score, int ID, ObstacleSpawner spawner, bool harmfull=true) {
         passed = false;
         
-        rigidbody.velocity = Vector2.zero;
+        rigidbody.linearVelocity = Vector2.zero;
         rigidbody.angularVelocity = 0;
 
         transform.position = position;
