@@ -64,3 +64,14 @@ The following packages were updated:
   com.unity.ugui from version 2.0.0 to 2.5.0
 The following packages were removed:
   com.unity.modules.vr@1.0.0
+
+=== Fri Oct 16 22:48:51 2026
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.modules.tetgen@1.0.0
+The following packages were updated:
+  com.unity.multiplayer.center from version 1.0.1 to 2.0.1
+  com.unity.ugui from version 2.5.0 to 2.6.0
